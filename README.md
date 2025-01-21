@@ -1,85 +1,64 @@
+# Text Classification with BiLSTM
 
-# Classification de Texte avec BiLSTM
+This project implements a **BiLSTM (Bidirectional Long Short-Term Memory)** model for the automatic classification of text into four categories:
 
-Ce projet implémente un modèle **BiLSTM (Bidirectional Long Short-Term Memory)** pour la classification automatique de textes en quatre catégories :
-
-- **World (Monde)**
+- **World**
 - **Sports**
-- **Business (Affaires)**
-- **Sci/Tech (Science/Tech)**
+- **Business**
+- **Sci/Tech**
 
-## Objectif
-L'objectif principal est de construire un modèle performant pour catégoriser des articles d'actualités en fonction de leur contenu textuel.
+## Objective
+The primary goal is to build a performant model to categorize news articles based on their textual content.
 
-## Données
-Le dataset utilisé provient de [AG News Classification](https://www.kaggle.com/datasets/amananandrai/ag-news-classification-dataset). 
+## Dataset
+The dataset used is [AG News Classification](https://www.kaggle.com/datasets/amananandrai/ag-news-classification-dataset).
 
-### Caractéristiques des données :
-- **120 000 articles pour l'entraînement.**
-- **7 600 articles pour le test.**
-- Chaque article contient :
-  - `Title` : Le titre de l'article.
-  - `Description` : Un résumé de l'article.
-  - `Class Index` : La catégorie (0 : World, 1 : Sports, 2 : Business, 3 : Sci/Tech).
+### Dataset Features:
+- **120,000 articles for training.**
+- **7,600 articles for testing.**
+- Each article contains:
+  - `Title`: The article's title.
+  - `Description`: A summary of the article.
+  - `Class Index`: The category (0: World, 1: Sports, 2: Business, 3: Sci/Tech).
 
-## Méthodologie
-1. **Prétraitement des données** :
-   - Combinaison des colonnes `Title` et `Description` pour enrichir le texte.
-   - Nettoyage des données (suppression des caractères spéciaux, conversion en minuscules).
-   - Conversion du texte en séquences numériques à l'aide d'un **Tokenizer**.
-   - Normalisation des séquences avec du padding (longueur max : 300).
+## Methodology
+1. **Data Preprocessing**:
+   - Combine the `Title` and `Description` columns to enrich the text.
+   - Clean the data (remove special characters, convert to lowercase).
+   - Convert text to numerical sequences using a **Tokenizer**.
+   - Normalize sequences with padding (max length: 300).
 
-2. **Construction du modèle BiLSTM** :
-   - **Embedding Layer** : Représentation vectorielle des mots.
-   - **Bidirectional LSTM** : Capture des relations contextuelles dans les deux sens.
-   - **Dense Layers** : Extraire des relations complexes.
-   - **Output Layer** : Prédiction des 4 classes via Softmax.
+2. **BiLSTM Model Construction**:
+   - **Embedding Layer**: Word vector representations.
+   - **Bidirectional LSTM**: Captures contextual relationships in both directions.
+   - **Dense Layers**: Extract complex relations.
+   - **Output Layer**: Predicts the 4 classes via Softmax.
 
-3. **Entraînement et validation** :
-   - Optimiseur : **Adam**.
-   - Fonction de perte : **Categorical Crossentropy**.
-   - Entraînement sur 15 époques avec un batch size de 64.
+3. **Training and Validation**:
+   - Optimizer: **Adam**.
+   - Loss function: **Categorical Crossentropy**.
+   - Trained for 15 epochs with a batch size of 64.
 
-4. **Déploiement d'une interface utilisateur** :
-   - Utilisation de **Streamlit** pour permettre aux utilisateurs de tester le modèle avec leurs propres textes.
+4. **Deployment with a User Interface**:
+   - Used **Streamlit** to allow users to test the model with custom texts.
 
-## Résultats
-- **Précision d'entraînement** : ~95%
-- **Précision de validation/test** : ~80-85%
+## Results
+- **Training Accuracy**: ~95%
+- **Validation/Test Accuracy**: ~80-85%
 
-## Installation
-1. Clonez le projet :
-   ```bash
-   git clone https://github.com/username/bilstm-text-classification.git
-   cd bilstm-text-classification
-   ```
-2. Installez les dépendances :
-   ```bash
-   pip install -r requirements.txt
-   ```
-3. Lancez l'application :
-   ```bash
-   streamlit run app.py
-   ```
+## Usage
+1. Enter a text in the Streamlit user interface.
+2. Click the button to predict the category.
+3. View the predicted class and associated probabilities.
 
-## Utilisation
-1. Saisissez un texte dans l'interface utilisateur Streamlit.
-2. Cliquez sur le bouton pour prédire la catégorie.
-3. Visualisez la classe prédite et les probabilités associées.
-
-## Structure du Projet
+## Project Structure
 ```
-|-- app.py                 # Script de l'application Streamlit
-|-- model.h5               # Modèle BiLSTM sauvegardé
-|-- tokenizer.pkl          # Tokenizer sauvegardé
-|-- requirements.txt       # Liste des dépendances
-|-- README.md              # Documentation du projet
+|-- app.py                 # Streamlit application script
+|-- model.h5               # Saved BiLSTM model
+|-- tokenizer.pkl          # Saved tokenizer
+|-- requirements.txt       # List of dependencies
+|-- README.md              # Project documentation
 ```
 
-## Améliorations possibles
-- Intégrer des embeddings pré-entraînés comme **GloVe** ou **Word2Vec**.
-- Étendre le projet pour inclure plus de catégories ou d'autres langues.
-- Déployer l'application en ligne avec **Streamlit Cloud** ou **Heroku**.
-
-## Auteur
-**Walid** - _Casablanca, Maroc_
+## Author
+**LAMHIBI .W**
